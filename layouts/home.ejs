@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include(projectroot + '/theme/includes/head.ejs') %>
+<body>
+  <%- include(projectroot + '/theme/includes/header.ejs') %>
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <div class="home">
+        <h2 class="post-list-heading">Posts</h2>
+        <ul class="post-list">
+          <% for(let i = 0; i < filemap.length; i++) { %>
+          <li>
+            <span class="post-meta"><%= new Date(filemap[i].frontmatter.date).toDateString() %></span>
+            <h3>
+              <a href="<%- site.root %>/<%- filemap[i].path %>" class="post-link">
+                <%= filemap[i].frontmatter.title %>
+              </a>
+            </h3>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <%- include(projectroot + '/theme/includes/footer.ejs') %>
+</body>
+</html>

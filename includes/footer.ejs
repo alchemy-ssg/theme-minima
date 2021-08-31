@@ -1,0 +1,43 @@
+<footer class="site-footer h-card">
+  <div class="wrapper">
+    <h2 class="footer-heading">
+      <%= site.title %>
+    </h2>
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"><%= site.author?.name || site.title %></li>
+          <li>
+            <a href="mailto:<%= site.author.email %>" class="u-email"><%= site.author.email %></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          <% for(let i = 0; i < site.socials.length; i++) { %>
+            <li>
+              <svg class="svg-icon"><use xlink:href="<%- site.root %>/assets/svg/socials.svg#<%= site.socials[i].type %>"></use></svg>
+              <a href="<%= site.socials[i].link %>"><%= site.socials[i].username %></a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+      <div class="footer-col footer-col-3">
+        <p>
+          <%= site.description %>
+        </p>
+        <% if(site.bmac) { %>
+          <% if(site.bmac.type == 'widget') { %>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="<%= site.bmac.username %>" data-description="Support me on Buy me a coffee!" data-message="<%= site.bmac.message %>" data-color="<%= site.bmac.color %>" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+          <% } else if(site.bmac.type == 'button') { %>
+        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="<%= site.bmac.username %>" data-color="<%= site.bmac.color %>" data-emoji="" data-font="Cookie" data-text="<%= site.bmac.message %>" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('input[type=checkbox]').forEach(e => e.disabled = true)
+</script>
